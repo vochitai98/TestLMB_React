@@ -1,24 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+
+import UserList from './UserList';
+import UserDetail from './UserDetail';
+import UserEdit from './UserEdit';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div>
+        <Routes>
+          {/* Sử dụng 'element' để xác định phần tử hoặc Component để hiển thị */}
+          <Route path="/" element={<UserList />} />
+          <Route path="/user" element={<UserDetail />} />
+          <Route path="/editUser" element={<UserEdit />} />
+          <Route path="*" element={<div>404 Not Found</div>} />
+        </Routes>
+      </div>
+    </Router>
   );
 }
 
